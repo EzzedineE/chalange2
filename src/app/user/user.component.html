@@ -1,0 +1,43 @@
+<div class="col-sm-12">
+    <h1 class="text-center text-primary">Chalange 2</h1>
+  </div>
+  <hr />
+  <div class="col-sm-12 text-center border">
+    <form [formGroup]="login" (ngSubmit)="add()">
+      <div class="styled-input my-3">
+        <input  type="text" fromControlName="nom"
+          class="fromControl" class="input"
+         
+          placeholder="Nom"
+          id="nom" />
+      </div>
+      <div class="styled-input my-3">
+        <input fromControlName="prenom"
+          class="fromControl"
+          type="text"
+          placeholder="Prenom"
+          id="prenom"
+        />
+      </div>
+      <div class="styled-input my-3">
+        <input fromControlName="email"
+          class="fromControl"
+          type="email"
+          placeholder="E-mail"
+          id="email"
+        />
+      </div>
+      <div class="styled-input my-3">
+        <input fromControlName="password"
+         class="fromControl"
+          type="password"
+          placeholder="Mot de passe"
+          id="password"
+        />
+      </div>
+      <div class="col-sm-12">
+        <button type="submit" class="mx-3 rounded btn btn-success"><i class="fa fa-plus"></i> Add</button>
+        <button class="mx-3 rounded btn btn-primary" (click)="reset()"><i class="fa fa-edit"></i> Reset</button>
+  </div>
+    </form>
+  </div>
