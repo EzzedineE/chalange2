@@ -1,43 +1,56 @@
 <div class="col-sm-12">
     <h1 class="text-center text-primary">Chalange 2</h1>
-  </div>
-  <hr />
-  <div class="col-sm-12 text-center border">
+</div>
+<hr />
+<div class="col-sm-12 text-center border">
     <form [formGroup]="login" (ngSubmit)="add()">
-      <div class="styled-input my-3">
-        <input  type="text" fromControlName="nom"
-          class="fromControl" class="input"
-         
-          placeholder="Nom"
-          id="nom" />
-      </div>
-      <div class="styled-input my-3">
-        <input fromControlName="prenom"
-          class="fromControl"
-          type="text"
-          placeholder="Prenom"
-          id="prenom"
-        />
-      </div>
-      <div class="styled-input my-3">
-        <input fromControlName="email"
-          class="fromControl"
-          type="email"
-          placeholder="E-mail"
-          id="email"
-        />
-      </div>
-      <div class="styled-input my-3">
-        <input fromControlName="password"
-         class="fromControl"
-          type="password"
-          placeholder="Mot de passe"
-          id="password"
-        />
-      </div>
-      <div class="col-sm-12">
-        <button type="submit" class="mx-3 rounded btn btn-success"><i class="fa fa-plus"></i> Add</button>
-        <button class="mx-3 rounded btn btn-primary" (click)="reset()"><i class="fa fa-edit"></i> Reset</button>
-  </div>
+        <div class="styled-input my-3">
+            <input type="text" formControlName="nom" class="fromControl" placeholder="Nom" id="nom"
+                [ngClass]="{ 'addB':submeted && !login.controls.nom.errors}" [ngStyle]="resete" />
+        </div>
+        <div class="styled-input my-3">
+            <input formControlName="prenom" class="fromControl" type="text" placeholder="Prenom" id="prenom"
+                [ngClass]="{ 'addB':submeted && !login.controls.prenom.errors }" [ngStyle]="resete" />
+        </div>
+        <p>{{!login.controls.prenom.errors}}</p><p>{{submeted}}</p>
+        <div class="styled-input my-3">
+            <input formControlName="email" class="fromControl" type="email" placeholder="E-mail" id="email"
+                [ngClass]="{ 'addB':submeted && !login.controls.email.errors }" [ngStyle]="resete" />
+        </div>
+        <div class="styled-input my-3">
+            <input formControlName="password" class="fromControl" type="password" placeholder="Mot de passe"
+                id="password" [ngClass]="{ 'addB':submeted && !login.controls.password.errors}" [ngStyle]="resete" />
+        </div>
+        <div class="col-sm-12">
+            <button type="submit" class="rounded btn btn-success btn-add">
+                <i class="fa fa-plus"></i> Add
+            </button>
+        </div>
     </form>
-  </div>
+    <button type="button" class="rounded btn btn-primary btn-reset" (click)="reset()">
+        <i class="fa fa-edit"></i> Reset
+    </button>
+</div>
+
+
+<!-- *************************************************************************************************** -->
+<!-- ***** -->
+
+<table class="table py-5" *ngIf="aff" >
+    <thead class="tete-tab text-dark">
+        <td class="text-dark"><b>Nom</b></td>
+        <td class="text-dark"><b>Prenom</b></td>
+        <td class="text-dark"><b>E-mail</b></td>
+        <td class="text-dark"><b>Mot De Passe</b></td>
+        <td class="text-dark"><b>action</b></td>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of tab;let i = index"> 
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td><button class="btn btn-danger"(click)="supprimer(i)">supprimer</button></td>
+        </tr>
+    </tbody>
+</table>
