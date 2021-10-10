@@ -1,6 +1,7 @@
-.addB{
-    background-color: green;
-    color: white;
+.addB {
+  background-color: green !important;
+  color: white;
 }
-
-.btn-add,.btn-reset{width: 100%;}
+.example-form-field {
+  width: 500px;
+}
